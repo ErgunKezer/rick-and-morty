@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Header, Grid } from 'semantic-ui-react';
-import { SearchInput, SelectionList } from '../components';
+import { Container, Header, Grid, Dimmer, Loader } from 'semantic-ui-react';
+import { SearchInput, SelectionList, CharacterDetail } from '../components';
 import { connect } from 'react-redux';
-import { listAction, listFilterAction } from '../redux/actions';
+import {
+  listAction,
+  listFilterAction,
+  selectedCharacterAction,
+} from '../redux/actions';
 const App = (props) => {
   // useEffect && useState
   const [search, setSearch] = useState('');
@@ -26,15 +30,18 @@ const App = (props) => {
   const searchbarChangeHandler = (event) => {
     setSearch(event.target.value);
   };
-  const listItemSelectHandler = (selectedItem, event) => {
-    console.log(selectedItem);
+  const listItemSelectHandler = (selectedCharacter, event) => {
+    props.selectedCharacterAction(selectedCharacter);
   };
 
   // Render
   return (
     <div className='main'>
       <Container>
-        <Header as='h2'>Rick and Morty Characters</Header>
+        <Dimmer active={props.list.length === 0}>
+          <Loader size='huge' inverted />
+        </Dimmer>
+        <Header as='h1'>Rick and Morty Characters</Header>
         <Grid columns='two'>
           <Grid.Row>
             <Grid.Column width={6}>
@@ -49,11 +56,7 @@ const App = (props) => {
               </div>
             </Grid.Column>
             <Grid.Column width={10}>
-              <SearchInput
-                change={searchbarChangeHandler}
-                value={search}
-                click={searchHandler}
-              />{' '}
+              <CharacterDetail />
             </Grid.Column>
           </Grid.Row>
         </Grid>
@@ -63,10 +66,12 @@ const App = (props) => {
 };
 
 const mapStateToProps = (state) => {
+  console.log(state);
   return { list: state.characterList, listFilter: state.characterListFilter };
 };
 const mapDispatchToProps = {
   listAction,
   listFilterAction,
+  selectedCharacterAction,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(App);

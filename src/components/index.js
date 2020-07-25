@@ -1,4 +1,5 @@
 import SearchInput from './SearchInput';
 import SelectionList from './SelectionList';
+import CharacterDetail from './CharacterDetail';
 
-export { SearchInput, SelectionList };
+export { CharacterDetail, SearchInput, SelectionList };
