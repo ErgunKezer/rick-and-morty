@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Header, Image } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 const CharacterDetail = (props) => {
+  const [animation, setAnimation] = useState(true);
+  const animationEndHandler = () => {
+    setAnimation(false);
+  };
+  useEffect(() => {
+    setAnimation(true);
+  }, [props.character]);
   if (!props.character) {
     return (
       <div>
@@ -10,7 +17,10 @@ const CharacterDetail = (props) => {
     );
   }
   return (
-    <div className='detail'>
+    <div
+      className='detail'
+      onAnimationEnd={() => animationEndHandler()}
+      className={animation ? 'detail animate' : 'detail'}>
       <Image avatar src={props.character.image} circular size='medium' />
       <Header as='h2'>{props.character.name}</Header>
       <div className='feature'>

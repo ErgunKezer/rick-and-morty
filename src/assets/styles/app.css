@@ -11,7 +11,7 @@
   width: 100%;
 }
 .selectionList {
-  height: 700px;
+  height: 600px;
   overflow-y: auto;
   margin-top: 1rem;
 }
@@ -27,6 +27,20 @@ h1.ui.header {
   border-radius: 8px;
   padding: 32px 16px;
   background-color: #eaeaea;
+}
+.animate {
+  animation: rotateandscale 1s linear;
+}
+@keyframes rotateandscale {
+  0% {
+    transform: scale(1.5) rotate(-360deg);
+  }
+  50% {
+    transform: scale(0.75) rotate(180deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
 }
 .detail h2.ui.header {
   font-size: 2.5rem;
