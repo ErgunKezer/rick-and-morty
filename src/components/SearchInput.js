@@ -10,6 +10,7 @@ const SearchInput = (props) => {
       placeholder='Search'
       value={value}
       onChange={change.bind(this)}
+      onKeyPress={(e) => e.key === 'Enter' && click(e)}
       action={{ icon: 'search', onClick: click.bind(this) }}
     />
   );

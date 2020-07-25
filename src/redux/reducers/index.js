@@ -1,5 +1,9 @@
 import { combineReducers } from 'redux';
-import rmListReducer from './rmListReducer';
+import characterList from './listReducer';
+import characterListFilter from './listFilterReducer';
+import selectedUser from './selecterCharacterReducer';
 export default combineReducers({
-  rmListReducer,
+  characterList,
+  selectedUser,
+  characterListFilter,
 });

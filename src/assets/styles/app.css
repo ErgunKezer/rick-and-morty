@@ -10,7 +10,7 @@
   width: 100%;
 }
 .selectionList {
-  height: 50%;
-  overflow-y: scroll;
+  height: 500px;
+  overflow-y: auto;
   margin-top: 1rem;
 }
