@@ -18,7 +18,6 @@ const CharacterDetail = (props) => {
   }
   return (
     <div
-      className='detail'
       onAnimationEnd={() => animationEndHandler()}
       className={animation ? 'detail animate' : 'detail'}>
       <Image avatar src={props.character.image} circular size='medium' />
@@ -40,7 +39,6 @@ const CharacterDetail = (props) => {
   );
 };
 const mapStateToProps = (state) => {
-  debugger;
   return {
     character: state.selectedCharacter,
   };
