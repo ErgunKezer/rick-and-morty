@@ -1,6 +1,7 @@
+import { selectedCharacter } from "../constants";
 const selectedCharacterAction = (character) => {
   return {
-    type: 'SELECTED_CHARACTER',
+    type: selectedCharacter,
     payload: character,
   };
 };
