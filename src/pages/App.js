@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { Container, Header, Grid, Dimmer, Loader } from 'semantic-ui-react';
-import { SearchInput, SelectionList, CharacterDetail } from '../components';
-import { connect } from 'react-redux';
+import React, { useState, useEffect } from "react";
+import { Container, Header, Grid, Dimmer, Loader } from "semantic-ui-react";
+import { SearchInput, SelectionList, CharacterDetail } from "../components";
+import { connect } from "react-redux";
 import {
   listAction,
   listFilterAction,
   selectedCharacterAction,
-} from '../redux/actions';
+} from "../redux/actions";
 const App = (props) => {
   // useEffect && useState
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
   const [list, setList] = useState([]);
   useEffect(() => {
     props.listAction();
@@ -36,13 +36,13 @@ const App = (props) => {
 
   // Render
   return (
-    <div className='main'>
+    <div className="main">
       <Container>
         <Dimmer active={props.list.length === 0}>
-          <Loader size='huge' inverted />
+          <Loader size="huge" inverted />
         </Dimmer>
-        <Header as='h1'>Rick and Morty Characters</Header>
-        <Grid columns='two'>
+        <Header as="h1">Rick and Morty Characters</Header>
+        <Grid columns="two">
           <Grid.Row>
             <Grid.Column width={6}>
               <SearchInput
@@ -50,9 +50,9 @@ const App = (props) => {
                 value={search}
                 click={searchHandler}
               />
-              <div className='selectionList'>
-                <SelectionList items={list} click={listItemSelectHandler} />{' '}
-                {list.length === 0 && 'No matched character'}
+              <div className="selectionList">
+                <SelectionList items={list} click={listItemSelectHandler} />{" "}
+                {list.length === 0 && "No matched character"}
               </div>
             </Grid.Column>
             <Grid.Column width={10}>
@@ -66,7 +66,6 @@ const App = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return { list: state.characterList, listFilter: state.characterListFilter };
 };
 const mapDispatchToProps = {
